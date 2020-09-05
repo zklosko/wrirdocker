@@ -1,0 +1,10 @@
+FROM httpd:alpine
+MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
+
+COPY cgi-bin/ # /usr/local/cgi-bin/web80/
+COPY apache2.conf /etc/apache2
+
+RUN a2enmod cgid && systemctl httpd restart
+
+EXPOSE 80
+CMD ["httpd-foreground"]
