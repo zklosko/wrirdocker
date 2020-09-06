@@ -25,7 +25,7 @@ services:
 #      ICECAST_ADMIN_EMAIL: operations@wrir.org
 #      ICECAST_LOCATION: Richmond, VA
 #      ICECAST_HOSTNAME: bandito
-#      ICECAST_MAX_CLIENTS: 100  # 50 on current setup
+#      ICECAST_MAX_CLIENTS: 100
 #      ICECAST_MAX_SOURCES: 2
     ports:
       - 8000:8000
@@ -39,7 +39,7 @@ services:
   stream-recorder:
     build: stream-recorder/.
     volumes:
-      - <local scripts dir> :/scripts
+      - stream-recorder/scripts:/scripts
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.38

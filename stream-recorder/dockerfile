@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
 RUN apt update -y && apt install wget curl -y
+
 # To set local timezone, source: https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes
 ENV TZ="America/New_York"
 RUN apt install tzdata -y && \
@@ -11,4 +12,4 @@ ADD /scripts /scripts
 VOLUME /scripts
 
 WORKDIR /scripts
-CMD ["bash", "RecRunner.sh"]
+CMD ["bash", "RecRunner2.sh"]

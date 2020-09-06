@@ -1,0 +1,25 @@
+# Source for diagram: https://jonathas.com/scheduling-tasks-with-cron-on-docker/
+
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                       7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *  command to execute
+
+# Every hour at xx:50, check schedule for updates
+50 * * * * ./scripts/getsched17.sh &
+
+# Every hour at top of hour, potentially restart stream recorder
+0 * * * * ./scripts/whatson4.sh &
+
+# Every hour at xx:15, run cleaning scripts
+15 * * * * ./scripts/posted.sh && \
+./scripts/getInfo2.sh && \
+./scripts/Cleaner.sh
+
+# Every first day of month (at 3 a.m.), run reporting script for Anna C.
+#0 3 1 * * ./scripts/wrir-soundexchange.sh &
