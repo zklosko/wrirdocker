@@ -1,5 +1,5 @@
 .DS_Store
 .mp3
-stream-recorder/scripts/raw/*
+stream-recorder/scripts/raw/**
 stream-recorder/scripts/*.txt
-stream-recorder/scripts/whatson.pid
+stream-recorder/scripts/*.pid

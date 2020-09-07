@@ -81,4 +81,4 @@ do
 done < ${sSchedule}
 
 
-rm ${sRecPID}/${sMe}
+rm ${sRecPID}/${sMe}  # error here, sees it as .//whatson.pid

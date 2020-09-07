@@ -17,20 +17,20 @@ services:
     
   icecast:
     image: infiniteproject/icecast
-#    enviornment:
-#      ICECAST_SOURCE_PASSWORD: wwr4trou
-#      ICECAST_ADMIN_PASSWORD: wwr4trou
-#      ICECAST_RELAY_PASSWORD: wwr4trou
-#      ICECAST_ADMIN_USERNAME: wrirops
-#      ICECAST_ADMIN_EMAIL: operations@wrir.org
-#      ICECAST_LOCATION: Richmond, VA
-#      ICECAST_HOSTNAME: bandito
-#      ICECAST_MAX_CLIENTS: 100
-#      ICECAST_MAX_SOURCES: 2
+    enviornment:
+      ICECAST_SOURCE_PASSWORD: wwr4trou
+      ICECAST_ADMIN_PASSWORD: wwr4trou
+      ICECAST_RELAY_PASSWORD: wwr4trou
+      ICECAST_ADMIN_USERNAME: wrirops
+      ICECAST_ADMIN_EMAIL: operations@wrir.org
+      ICECAST_LOCATION: Richmond, VA
+      ICECAST_HOSTNAME: bandito
+      ICECAST_MAX_CLIENTS: 100
+      ICECAST_MAX_SOURCES: 2
     ports:
       - 8000:8000
-    volumes:
-      - ./icecast2:/etc/icecast2
+#    volumes:
+#      - ./icecast2:/etc/icecast2
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.37
@@ -48,20 +48,33 @@ services:
     restart: always
     
   webdav:
-    image: bytemark/webdav
+    image: webdav/.
     restart: always
     ports:
       - "443:443"
-    environment:
-      AUTH_TYPE: Digest  # or Basic
-      SSL_CERT: selfsigned
-    volumes:
-      - /srv/dav:/var/lib/dav
-      - apache-webdav/user.password:/user.passwd  # path to pregen password file
+#    environment:
+#      AUTH_TYPE: Digest  # or Basic
+#      SSL_CERT: selfsigned
+#    volumes:
+#      - /srv/dav:/var/lib/dav
+#      - apache-webdav/user.password:/user.passwd  # path to pregen password file
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.39
-    
+        
+  ssh:
+    image: panubo/sshd
+    restart: always
+    ports: 
+      - "22:22"
+    enviornment:
+      SSH_ENABLE_PASSWORD_AUTH: true
+    volumes:
+      - <pass file> :/etc/entrypoint.d/
+    networks:
+      wrir_stack:
+        ipv4_address: 192.168.200.40
+        
 networks:
   wrir_stack:
     ipam:

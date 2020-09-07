@@ -1,4 +1,5 @@
 #!/bin/bash
+# Found in /home/Peter/
 
 sHTP="/var/www/web1/passwd.dav"
 sAllowed="/var/www/data/allowed.txt"
