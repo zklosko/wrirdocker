@@ -1,0 +1,17 @@
+FROM nginx
+MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
+
+# Mount network shares
+#COPY smbcreds /
+#RUN apt update -y && apt install cifs-utils nginx-full -y && \
+#mount -t cifs -o credentials=/smbcreds 192.168.200.16/shared /shares/Y && \
+#mount -t cifs -o credentials=/smbcreds 192.168.200.23/z /shares/Z
+
+#RUN apt update -y && apt install nginx-full -y
+
+COPY nginx-conf/nginx.conf /etc/nginx/nginx.conf
+COPY www /var/www/html
+
+EXPOSE 80
+STOPSIGNAL SIGTERM
+CMD ["nginx","-g","daemon off;"]
