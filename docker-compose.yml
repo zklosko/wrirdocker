@@ -2,14 +2,14 @@ version: '3.8'
 
 services:
   apache-json:
-    build: apache-json/.
+    build: json/.
     ports:
       - 80:80
-    volumes:
-      - ./:/var/www/html
-      - ${APACHE_LOG_VOLUME}:
-      - ${APACHE_CONF}:
-      - ${SSL_VOLUME}:
+#    volumes:
+#      - ./:/var/www/html
+#      - ${APACHE_LOG_VOLUME}:
+#      - ${APACHE_CONF}:
+#      - ${SSL_VOLUME}:
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.36
@@ -40,24 +40,23 @@ services:
     build: stream-recorder/.
     volumes:
       - stream-recorder/scripts:/scripts
-    networks:
-      wrir_stack:
-        ipv4_address: 192.168.200.38
     depends_on:
       - icecast
     restart: always
     
   webdav:
-    image: webdav/.
+    image: bytemark/webdav
     restart: always
     ports:
       - "443:443"
-#    environment:
-#      AUTH_TYPE: Digest  # or Basic
-#      SSL_CERT: selfsigned
-#    volumes:
-#      - /srv/dav:/var/lib/dav
-#      - apache-webdav/user.password:/user.passwd  # path to pregen password file
+    environment:
+      AUTH_TYPE: Basic  
+      SSL_CERT: selfsigned
+      SERVER_NAMES: files.wrir.org
+      REALM: WRIR Network Drives
+    volumes:
+      - storage:/var/lib/dav
+      - user.passwd:/user.passwd  # path to pregen password file
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.39
@@ -70,7 +69,8 @@ services:
     enviornment:
       SSH_ENABLE_PASSWORD_AUTH: true
     volumes:
-      - <pass file> :/etc/entrypoint.d/
+      - keys:/etc/ssh/keys
+      - setpasswd.sh:/etc/entrypoint.d/
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.40

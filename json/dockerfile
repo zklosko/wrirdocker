@@ -1,17 +1,16 @@
-FROM nginx
+FROM httpd
 MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
 # Mount network shares
-#COPY smbcreds /
-#RUN apt update -y && apt install cifs-utils nginx-full -y && \
-#mount -t cifs -o credentials=/smbcreds 192.168.200.16/shared /shares/Y && \
-#mount -t cifs -o credentials=/smbcreds 192.168.200.23/z /shares/Z
+COPY smbcreds /creds
+RUN apt update -y && apt install cifs-utils -y && \
+mount -t cifs -o credentials=/creds/smbcreds 192.168.200.16/shared /shares/Y && \
+mount -t cifs -o credentials=/creds/smbcreds 192.168.200.23/z /shares/Z
 
-#RUN apt update -y && apt install nginx-full -y
+COPY apache2 /usr/local/apache2
 
-COPY nginx-conf/nginx.conf /etc/nginx/nginx.conf
-COPY www /var/www/html
+VOLUME ["/usr/local/apache2", "/shares"]
 
 EXPOSE 80
 STOPSIGNAL SIGTERM
-CMD ["nginx","-g","daemon off;"]
+CMD ["httpd-foreground"]

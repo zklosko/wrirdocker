@@ -1,11 +1,13 @@
-FROM ubuntu:16.04
+FROM bytemark/webdav
 MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
-RUN apt update -y && apt install nginx-full -y
+ENV AUTH_TYPE="Basic"
+ENV SSL_CERT="selfsigned"
+ENV SERVER_NAMES="files.wrir.org"
+ENV REALM="WRIR Network Drives"
 
-COPY nginx-conf /etc/nginx
-COPY storage /var/www
+VOLUME ["/var/lib/dav"]
 
 EXPOSE 443
 STOPSIGNAL SIGTERM
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["httpd-foreground"]
