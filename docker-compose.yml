@@ -1,15 +1,17 @@
 version: '3.8'
 
 services:
-  apache-json:
-    build: json/.
+  json:
+    image: httpd
     ports:
       - 80:80
-#    volumes:
-#      - ./:/var/www/html
-#      - ${APACHE_LOG_VOLUME}:
-#      - ${APACHE_CONF}:
-#      - ${SSL_VOLUME}:
+    volumes:
+      - ./htdocs:/var/local/apache2/htdocs
+      - ./cgi-bin:/var/local/apache2/cgi-bin
+      - ./httpd.conf:/var/local/apache2/conf/httpd.conf
+      - ${APACHE_LOG_VOLUME}:
+      - ${APACHE_CONF}:
+      - ${SSL_VOLUME}:
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.36
@@ -25,12 +27,10 @@ services:
       ICECAST_ADMIN_EMAIL: operations@wrir.org
       ICECAST_LOCATION: Richmond, VA
       ICECAST_HOSTNAME: bandito
-      ICECAST_MAX_CLIENTS: 100
+      ICECAST_MAX_CLIENTS: 50
       ICECAST_MAX_SOURCES: 2
     ports:
       - 8000:8000
-#    volumes:
-#      - ./icecast2:/etc/icecast2
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.37

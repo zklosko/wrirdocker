@@ -1,15 +1,11 @@
 FROM httpd
 MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
-# Mount network shares
-COPY smbcreds /creds
-RUN apt update -y && apt install cifs-utils -y && \
-mount -t cifs -o credentials=/creds/smbcreds 192.168.200.16/shared /shares/Y && \
-mount -t cifs -o credentials=/creds/smbcreds 192.168.200.23/z /shares/Z
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY htdocs /usr/local/apache2/htdocs
+COPY cgi-bin /usr/local/apache2/cgi-bin
 
-COPY apache2 /usr/local/apache2
-
-VOLUME ["/usr/local/apache2", "/shares"]
+VOLUME /usr/local/apache2
 
 EXPOSE 80
 STOPSIGNAL SIGTERM
