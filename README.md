@@ -6,7 +6,7 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 
 ## TODOs
 
-- [] Obtain SSL certificates for webdav and json containers, in `server.crt` and `server.key`files
+- [] Obtain SSL certificates for webdav and json containers, in `server.crt` and `server.key` files
 - [] Start working on networking between the containers and the outside network/internet
 - [] Pull password file for use with ssh or put together a plan to distribute new passwords to users
 
@@ -27,7 +27,8 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
   - Using httpd
   - HTTP 401 Error page created
   - Cgi scripts appear to be executing correctly
-  - `docker run -it -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf --publish 80:80 httpd`
+  - Still need to enable hourly updates of the livesound archive
+  - `docker run -it -v /wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf --publish 80:80 httpd`
     - Still need to mount Y and Z drives, and mount location for logs
 - ssh: *yet to start testing*
   - Idea: pass users/hashed passwords in via a script, try not to delete container

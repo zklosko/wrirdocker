@@ -12,4 +12,4 @@ ADD /scripts /scripts
 VOLUME /scripts
 
 WORKDIR /scripts
-CMD ["bash", "RecRunner2.sh"]
+CMD ["bash", "RecRunner.sh"]

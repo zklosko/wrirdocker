@@ -55,7 +55,7 @@ services:
       SERVER_NAMES: files.wrir.org
       REALM: WRIR Network Drives
     volumes:
-      - storage:/var/lib/dav
+      - mounts:/var/lib/dav/data
       - user.passwd:/user.passwd  # path to pregen password file
     networks:
       wrir_stack:
@@ -77,7 +77,10 @@ services:
         
 networks:
   wrir_stack:
+    driver: macvlan
+    driver_opts:
+      parent: <eth card name>
     ipam:
-      driver: default
       config:
         - subnet: "192.168.200.0/24"
+          gateway: "192.168.200.1"
