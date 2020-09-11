@@ -4,7 +4,7 @@ echo Start $0
 
 cd ./raw/
 
-ls -1r *.mp3.new|
+ls -1r *.mp3.new  # removed | at end of line
 while read sFile
 do
   sFile=${sFile##*/}

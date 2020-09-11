@@ -45,18 +45,19 @@ services:
     restart: always
     
   webdav:
-    image: bytemark/webdav
+    image: twizzel/webdav
     restart: always
     ports:
       - "443:443"
     environment:
-      AUTH_TYPE: Basic  
-      SSL_CERT: selfsigned
+      AUTH_TYPE: Basic
       SERVER_NAMES: files.wrir.org
       REALM: WRIR Network Drives
     volumes:
       - mounts:/var/lib/dav/data
-      - user.passwd:/user.passwd  # path to pregen password file
+      - user.passwd:/user.passwd
+      - localhost.key:/privkey.pem
+      - localhost.cert:/cert.pem
     networks:
       wrir_stack:
         ipv4_address: 192.168.200.39
