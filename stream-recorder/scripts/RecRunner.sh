@@ -22,7 +22,7 @@ do
 #  bash ./Cleaner.sh &
 #  bash ./wan-traffic.sh &
 
+  #Recheck at top of minute xx:xx:00
   sSecondHand=$(date "+%S")
   sleep $(( 60 - ${sSecondHand} ))  # was sleep $(( 60 - 10#${sSecondHand} ))
-  # TODO: change to "sleep until top of hour" in seconds or minutes
 done

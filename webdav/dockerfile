@@ -3,7 +3,6 @@ MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
 ENV AUTH_TYPE="Basic"
 ENV SERVER_NAMES="files.wrir.org"
-ENV REALM="WRIR Network Drives"
 
 VOLUME ["/var/lib/dav"]
 

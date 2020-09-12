@@ -6,7 +6,7 @@ sShow=$(tr -d -c '[:digit:]' <<< "${1}")
 
 sType="mp3"
 sMType="mpeg"
-sMedia="/var/www/web1/storage/ShowArchive/"
+sMediaPath=/usr/local/apache2/htdocs/shows  # was /var/www/web1/storage/ShowArchive/
 
 #/var/www/web1/storage/ShowArchive/
 sFile=$(ls -1 ${sMedia}/${sShow}*.${sType})

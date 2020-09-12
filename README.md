@@ -12,6 +12,8 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 
 ## Updates
 
+- icecast: *ready for deployment*
+  - `docker run -d --publish 8000:8000 -e ICECAST_SOURCE_PASSWORD=wwr4trou -e ICECAST_ADMIN_PASSWORD=wwr4trou -e ICECAST_RELAY_PASSWORD=wwr4trou -e ICECAST_ADMIN_USERNAME=admin -e ICECAST_ADMIN_EMAIL=operations@wrir.org -e ICECAST_LOCATION=RVA -e ICECAST_HOSTNAME=bandito -e ICECAST_MAX_CLIENTS=50 -e ICECAST_MAX_SOURCES=2 --name icecast --restart=always infiniteproject/icecast`
 - webdav: *working*
   - Using Twizzel's fix of Bytemark's webdav image
   - Successfully accepts user.passwd file from Blackhand!
@@ -20,7 +22,6 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
   - Going to need to pass cifs folders as mount; cannot mount cifs inside container
   - Run: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/mounts:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/localhost.key:/privkey.pem -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/localhost.cert:/cert.pem -e AUTH_TYPE=Basic --publish 443:443 -d twizzel/webdav`
 - stream-recorder: *in testing*
-  - Recorder switches programs on it's own but still throws up a lot of errors
   - `whatson4.sh` and `getsched17.sh` appear to work, rest questionable
   - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" reclegacy`
 - json: *in testing*
@@ -32,7 +33,3 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
     - Still need to mount Y and Z drives, and mount location for logs
 - ssh: *yet to start testing*
   - Idea: pass users/hashed passwords in via a script, try not to delete container
-- icecast: *yet to start testing*
-  - Idea: pass enviornment variables via docker-compose, likely doesn't need much tweaking
-  - Biggest obstical is figuring out how to network containers so that they appear on the station's network. Thinking of `macvlan`.
-  - `docker run -d --publish 8000:8000 -e ICECAST_SOURCE_PASSWORD=wwr4trou -e ICECAST_ADMIN_PASSWORD=wwr4trou -e ICECAST_RELAY_PASSWORD=wwr4trou -e ICECAST_ADMIN_USERNAME=admin -e ICECAST_ADMIN_EMAIL=operations@wrir.org -e ICECAST_LOCATION=RVA -e ICECAST_HOSTNAME=bandito -e ICECAST_MAX_CLIENTS=50 -e ICECAST_MAX_SOURCES=2 infiniteproject/icecast`

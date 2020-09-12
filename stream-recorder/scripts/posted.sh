@@ -13,23 +13,21 @@ fi
 
 # make working folders if they're not here
 [[ ! -d ${sWorkDir}/raw ]] && mkdir ${sWorkDir}/raw
-[[ ! -d ${sWorkDir}/mp3 ]] && mkdir ${sWorkDir}/mp3
+[[ ! -d ${sWorkDir}/mp3 ]] && mkdir ${sWorkDir}/mp3  # is this directory used?
 
 # this file, the name of the current show should exist.
 [[ ! -f ${sWorkDir}/currentshow.txt ]] && exit
 
-### This next block of code is broken
-if sList=$(ls -1 *.mp3 | grep -v $(<${sWorkDir}/raw/currentshow.txt) )  # added /raw/, file is not located inside workdir
+if sList=$(ls -1 *.mp3 | grep -v $(<${sWorkDir}/currentshow.txt) )
 then
   mv ${sList} ${sWorkDir}/raw/  # moves sList into raw directory
 
   for i in ${sList}
   do 
     sFF=$(ls ${sWorkDir}/raw/${i:0:12}-*.mp3|head -1)  # returns beginning of filename
-    touch ${sFF}.new  # adds ".new" to end of filename?
+    touch ${sFF}.new  # creates new file, sFF.new
   done
 fi
-###
 
 #VBR quality (really size) is selected using a number from 0 to 9.
 # Use a value of 0 for high quality, larger files, and 9 for smaller files of lower quality. 4 is the default.

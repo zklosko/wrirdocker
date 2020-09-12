@@ -23,7 +23,7 @@ echo using schedule ${sSchedule}
 
 #Configured to pull from icecast container
 sStream=http://files.wrir.org:8000/wrir
-sSaveTo=/scripts/raw  # initially ./
+sSaveTo=./  # saves to workdir
 
 sYesterdaysLast=$(grep -v 2400 $(date "+%a" -d yesterday).txt|tail -1)
 sYLS=${sYesterdaysLast:0:4}
