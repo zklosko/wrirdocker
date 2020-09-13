@@ -1,7 +1,0 @@
-FROM panubo/sshd
-
-ENV SSH_ENABLE_PASSWORD_AUTH="true"
-
-VOLUME ["/etc/ssh/keys", "/etc/entrypoint.d"]
-
-EXPOSE 22
