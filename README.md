@@ -21,7 +21,8 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
   - Going to need to pass cifs folders as mount; cannot mount cifs inside container
   - Run: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/mounts:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d twizzel/webdav`
 - stream-recorder: *in testing*
-  - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" reclegacy`
+  - Need to mount `htdocs/shows` directory from json container
+  - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" recorder`
 - json: *in testing*
   - Using httpd
   - HTTP 401 Error page created

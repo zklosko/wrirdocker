@@ -18,8 +18,9 @@ do
   then
     bash -x ./getsched17.sh &
   fi
+  bash -x ./Publish.sh &
 #  bash -x ./CopyToRAS.sh &
-#  bash ./Cleaner.sh &
+  bash ./Cleaner.sh &
 #  bash ./wan-traffic.sh &
 
   #Recheck at top of minute xx:xx:00

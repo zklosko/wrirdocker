@@ -13,7 +13,7 @@ fi
 
 # make working folders if they're not here
 [[ ! -d ${sWorkDir}/raw ]] && mkdir ${sWorkDir}/raw
-[[ ! -d ${sWorkDir}/mp3 ]] && mkdir ${sWorkDir}/mp3  # is this directory used?
+#[[ ! -d ${sWorkDir}/mp3 ]] && mkdir ${sWorkDir}/mp3  # is this directory used?
 
 # this file, the name of the current show should exist.
 [[ ! -f ${sWorkDir}/currentshow.txt ]] && exit
