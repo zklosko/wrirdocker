@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  json:
+  files.wrir.org:
     image: httpd
     ports:
       - target: 80
@@ -41,35 +41,3 @@ services:
     depends_on:
       - icecast
     restart: always
-    
-  webdav:
-    image: twizzel/webdav
-    restart: always
-    ports:
-      - target: 443
-        published: 443
-        protocol: tcp
-        mode: host
-    environment:
-      AUTH_TYPE: Basic
-      SSL_CERT: selfsigned
-      SERVER_NAMES: files.wrir.org
-      REALM: WRIR Network Drives
-    volumes:
-      - ./webdav/mounts:/var/lib/dav/data
-      - ./webdav/user.passwd:/user.passwd
-        
-  ssh:
-    image: panubo/sshd
-    restart: always
-    ports:
-      - target: 22
-        published: 2222
-        protocol: tcp
-        mode: host
-    enviornment:
-      SSH_ENABLE_PASSWORD_AUTH: true
-    volumes:
-      - ./sshd/keys:/etc/ssh/keys
-      - ./sshd/setpasswd.sh:/etc/entrypoint.d/
-      

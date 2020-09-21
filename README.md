@@ -14,14 +14,18 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 
 - icecast: *ready for deployment*
   - `docker run -d --publish 8000:8000 -e ICECAST_SOURCE_PASSWORD=wwr4trou -e ICECAST_ADMIN_PASSWORD=wwr4trou -e ICECAST_RELAY_PASSWORD=wwr4trou -e ICECAST_ADMIN_USERNAME=admin -e ICECAST_ADMIN_EMAIL=operations@wrir.org -e ICECAST_LOCATION=RVA -e ICECAST_HOSTNAME=bandito -e ICECAST_MAX_CLIENTS=50 -e ICECAST_MAX_SOURCES=2 --name icecast --restart=always infiniteproject/icecast`
-- webdav: *working*
+- webdav: *in testing*
   - Using Twizzel's fix of Bytemark's webdav image
   - Successfully accepts user.passwd file from Blackhand!
   - Using autogen self signed SSL cert
+  - Doesn't run correctly on on-prem PC
   - Run: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/mounts:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d --restart=always --name webdav twizzel/webdav`
 - stream-recorder: *working*
-  - Need to mount `htdocs/shows` directory from json container
+  - Now based off Debian 9 (Stretch-slim)?
   - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recorder`
+  - `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recorder`
+  - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recub20`
+  - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recdeb`
 - json: *in testing*
   - Using httpd
   - HTTP 401 Error page created
@@ -31,3 +35,10 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
     - Still need to mount Y and Z drives, and mount location for logs
 - ssh: *yet to start testing*
   - Idea: pass users/hashed passwords in via a script, try not to delete container
+  - `docker run -d --publish 2222:22 -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/entrypoint.d:/etc/entrypoint.d" -e SSH_ENABLE_PASSWORD_AUTH=true --name ssh panubo/sshd`
+  - `docker run -ti --publish 2222:22 \
+  -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/keys/:/etc/ssh/keys \
+  -e SSH_USERS=user1:1012:1112,test:1013:1113 \
+  -e SSH_ENABLE_PASSWORD_AUTH=true \
+  -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/entrypoint.d/:/etc/entrypoint.d/ \
+  panubo/sshd`

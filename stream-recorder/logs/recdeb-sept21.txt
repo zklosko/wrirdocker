@@ -1,0 +1,295 @@
+Mon, 21 Sep 2020 16:01:00 -0400
+
+pre whatson Mon Sep 21 16:01:00 EDT 2020
+
+post whatson Mon Sep 21 16:01:00 EDT 2020
+
++ sRecPID=./
+
++ sMe=whatson.pid
+
++ sRecBinary=wget
+
++ [[ -f .//whatson.pid ]]
+
++ sWorkDir=/scripts
+
++ sPid=/scripts/me.pid
+
++ [[ -f /scripts/me.pid ]]
+
++ echo 415
+
++ grep -q ./getInfo2.sh
+
++ grep -v 416
+
++ ps -ef
+
++ echo Start ./getInfo2.sh
+
+Start ./getInfo2.sh
+
++ cd ./raw/
+
++ read sFile
+
++ ls -1r '*.mp3.new'
+
++ [[ ! -d /scripts/raw ]]
+
++ kill 365
+
++ [[ ! -f /scripts/currentshow.txt ]]
+
+ls: + echo 413
+
+cannot access '*.mp3.new': No such file or directory
+
+++ date +%Y%m%d
+
+++ ls -1 202009211500-1537-GlobalAGoGo.mp3 202009211500-1544-GlobalAGoGo.mp3 202009211500-1552-GlobalAGoGo.mp3 202009211500-1553-GlobalAGoGo.mp3 202009211500-1554-GlobalAGoGo.mp3 202009211500-1600-GlobalAGoGo.mp3
+
++ sDate=20200921
+
+++ date +%a
+
++ sDay=Mon
+
+++ grep -v 202009211500
+
+++ date +%H%M
+
++ sHour=1601
+
++ sSchedule=20200921.txt
+
++ [[ -f 20200921.txt ]]
+
++ sSchedule=Mon.txt
+
++ echo using schedule Mon.txt
+
++ sStream=http://files.wrir.org:8000/wrir
+
++ sSaveTo=./
+
+++ tail -1
+
+using schedule Mon.txt
+
++++ date +%a -d yesterday
+
++ sList=
+
++ cd ./raw/
+
+++ grep -v 2400 Sun.txt
+
+++ ls '*.new'
+
++ sYesterdaysLast='2300 Pandemic'
+
++ sYLS=2300
+
++ sYLP=Pandemic
+
+
+
++ sDone=N
+
+ls: cannot access '*.new': No such file or directory
+
++ [[ -f /scripts/me.pid ]]
+
++ read sStart sTitle
+
++ rm /scripts/me.pid
+
++ [[ N = N ]]
+
++ [[ 10#0000 -gt 10#1601 ]]
+
++ sPrevStart=0000
+
++ sPrevTitle=Pandemic
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#0100 -gt 10#1601 ]]
+
++ sPrevStart=0100
+
++ sPrevTitle=CurvedAir
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#0300 -gt 10#1601 ]]
+
++ sPrevStart=0300
+
++ sPrevTitle=DemocracyNow
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#0600 -gt 10#1601 ]]
+
++ sPrevStart=0600
+
++ sPrevTitle=MondayBreakfastBlend
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#0800 -gt 10#1601 ]]
+
++ sPrevStart=0800
+
++ sPrevTitle=DemocracyNow
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#0900 -gt 10#1601 ]]
+
++ sPrevStart=0900
+
++ sPrevTitle=BigPictureScience
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1000 -gt 10#1601 ]]
+
++ sPrevStart=1000
+
++ sPrevTitle=DiversityRichmondSpeaks1stand3rdQueerIntersections2ndand4th
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1100 -gt 10#1601 ]]
+
++ sPrevStart=1100
+
++ sPrevTitle=WordsofAdvicewithRosalynL
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1200 -gt 10#1601 ]]
+
++ sPrevStart=1200
+
++ sPrevTitle=RecoveryIs1st3rd5thFormerlyRichmondRecovers
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1300 -gt 10#1601 ]]
+
++ sPrevStart=1300
+
++ sPrevTitle=HighFive
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1500 -gt 10#1601 ]]
+
++ sPrevStart=1500
+
++ sPrevTitle=GlobalAGoGo
+
++ read sStart sTitle
+
++ [[ N = N ]]
+
++ [[ 10#1700 -gt 10#1601 ]]
+
++ echo Current GlobalAGoGo
+
++ sProg=202009211500
+
++ [[ 1500 = \0\0\0\0 ]]
+
++ ps -ef
+
++ grep -q 202009211500
+
++ grep wget
+
++ grep -v grep
+
+Current GlobalAGoGo
+
++ echo Recording already
+
+
+
++ sDone=Y
+
++ read sStart sTitle
+
+Recording already
+
++ [[ Y = N ]]
+
++ rm .//whatson.pid
+
+RecRunner.sh: line 29: 365 Terminated bash -x ./whatson4.sh
+
++ ps -ef
+
++ grep -q ./Publish.sh
+
++ grep -v 444
+
+Starting ./Cleaner.sh Mon Sep 21 16:01:05 EDT 2020
+
++ sWorkDir=/scripts
+
++ [[ ! -d /scripts/publish ]]
+
++ sDest=./publish
+
++ sMinFree=97
+
+++ date
+
++ echo Start ./Publish.sh Mon Sep 21 16:01:05 EDT 2020
+
+Start ./Publish.sh Mon Sep 21 16:01:05 EDT 2020
+
++ read sFile
+
++ ls 'raw/*.publish'
+
+find: './raw/*': No such file or directory
+
+ls: cannot access 'raw/*.publish': No such file or directory
+
+Ending ./Cleaner.sh Mon Sep 21 16:01:05 EDT 2020
+
+++ find showdata.txt -newer showdata.txt.copied
+
+find: 'showdata.txt.copied': No such file or directory
+
+
+
++ sSched=
+
++ [[ -n '' ]]
