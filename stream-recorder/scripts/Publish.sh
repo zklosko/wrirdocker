@@ -33,9 +33,10 @@ while read sFile ; do
   fi
 done
 
-sSched=$(find showdata.txt -newer showdata.txt.copied)
-if [[ -n ${sSched} ]] ; then
-  if cp showdata.txt ${sDest} ; then
-    touch -r showdata.txt showdata.txt.copied
-  fi
-fi
+# below condition appears to be failing
+# sSched=$(find showdata.txt -newer showdata.txt.copied)
+# if [[ -n ${sSched} ]] ; then
+#   if cp showdata.txt ${sDest} ; then
+#     touch -r showdata.txt showdata.txt.copied
+#   fi
+# fi

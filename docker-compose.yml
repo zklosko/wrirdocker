@@ -9,15 +9,15 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ./json/htdocs:/var/local/apache2/htdocs
-      - ./json/cgi-bin:/var/local/apache2/cgi-bin
-      - ./json/httpd.conf:/var/local/apache2/conf/httpd.conf
-      - ./stream-recorder/publish:/var/local/apache2/htdocs/shows
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/var/local/apache2/htdocs
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/var/local/apache2/cgi-bin
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/var/local/apache2/conf/httpd.conf
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/publish:/var/local/apache2/htdocs/shows
     restart: always
     
   icecast:
     image: infiniteproject/icecast
-    enviornment:
+    environment:
       ICECAST_SOURCE_PASSWORD: wwr4trou
       ICECAST_ADMIN_PASSWORD: wwr4trou
       ICECAST_RELAY_PASSWORD: wwr4trou
@@ -37,7 +37,7 @@ services:
   stream-recorder:
     build: stream-recorder/.
     volumes:
-      - ./stream-recorder/scripts:/scripts
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts
     depends_on:
       - icecast
     restart: always

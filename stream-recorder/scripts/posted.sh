@@ -13,7 +13,6 @@ fi
 
 # make working folders if they're not here
 [[ ! -d ${sWorkDir}/raw ]] && mkdir ${sWorkDir}/raw
-#[[ ! -d ${sWorkDir}/mp3 ]] && mkdir ${sWorkDir}/mp3  # is this directory used?
 
 # this file, the name of the current show should exist.
 [[ ! -f ${sWorkDir}/currentshow.txt ]] && exit
@@ -58,12 +57,11 @@ do
     rm ${sPLS}
     #ffmpeg "copy ${sFile}.${sProg}.mp3" "${sFile}.${sProg}.ogg"
     ffmpeg -i "${sFile}.${sProg}.mp3" -codec:a libvorbis "${sFile}.${sProg}.ogg"
-    #sox "${sFile}-[0-2]*.mp3" -C3 ${sFile}.${sProg}.ogg
+    #sox "${sFile}-[0-2]*.mp3" -C3 ${sFile}.${sProg}.ogg  # soundexchange, was compressing files
     touch ${sFile}.${sProg}.publish
   fi
   rm ${sNew}
-  #rm ${sFile}-[0-2]*.wav
-  mv ${sFile}-[0-2]*.mp3 trash/
+  rm ${sFile}-[0-2]*.mp3
 done
 
 [[ -f ${sPid} ]] && rm ${sPid}
