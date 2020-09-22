@@ -1,7 +1,7 @@
 #!/bin/bash
 # Run once a week
 
-sDir="/var/www/web1/storage/ShowArchive"
+sDir="/shows"  # link to json/htdocs/shows
 
 echo "Starting $0 $(date)"
 

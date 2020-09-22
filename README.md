@@ -7,8 +7,8 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 ## TODOs
 
 - [x] Obtain SSL certificates for webdav, in `server.crt` and `server.key` files
-- [x] Start working on networking between the containers and the outside network/internet
 - [] Pull password file for use with ssh or put together a plan to distribute new passwords to users
+- [] Get SSHD to accept user/password creation script
 
 ## Updates
 
@@ -16,7 +16,7 @@ Replacing Bandito:
 
 - icecast: *ready for deployment*
   - `docker run -d --publish 8000:8000 -e ICECAST_SOURCE_PASSWORD=wwr4trou -e ICECAST_ADMIN_PASSWORD=wwr4trou -e ICECAST_RELAY_PASSWORD=wwr4trou -e ICECAST_ADMIN_USERNAME=admin -e ICECAST_ADMIN_EMAIL=operations@wrir.org -e ICECAST_LOCATION=RVA -e ICECAST_HOSTNAME=bandito -e ICECAST_MAX_CLIENTS=50 -e ICECAST_MAX_SOURCES=2 --name icecast --restart=always infiniteproject/icecast`
-- stream-recorder: *ready for deployment?*
+- stream-recorder: *ready for deployment*
   - Now based off Debian 9 (Stretch-slim)
   - `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder --restart=always recorder`
   - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recdeb`
@@ -29,11 +29,11 @@ Replacing Rostov:
   - Cgi scripts appear to be executing correctly
   - Still need to enable hourly updates of the livesound archive
     - Make new container for CRON scripts?
-  - `docker run -d -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows --publish 80:80 --restart=always --name files.wrir.org httpd`
+  - `docker run -d -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows -v /wrirdocker/webdav/mounts/Y:/Y --publish 80:80 --restart=always --name files.wrir.org httpd`
     - Still need to mount Y and Z drives, and mount location for logs
 - cron *in testing*
   - Using Debian stretch-slim image
-  - `docker run -d -v /wrirdocker/webdav/mounts/Y:/Y --name cron cron`
+  - `docker run -d -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/stream-recorder/scripts/publish:/shows -v /wrirdocker/json/htdocs:/htdocs --name cron cron`
 
 Replacing Blackhand:
 

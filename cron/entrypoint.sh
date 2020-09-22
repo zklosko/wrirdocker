@@ -4,6 +4,7 @@
 
 # Start the run once job.
 echo "Docker container has been started"
+bash scripts/lsdb2.sh 
 
 # Setup a cron schedule
 # By the way...

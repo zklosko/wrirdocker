@@ -8,9 +8,9 @@ sTrk="${2}"
 
 [[ -f "/var/www/data/${sDB}.lsdb" ]] || exit 1
 
-sDBF=/var/www/data/${sDB}.lsdb
+sDBF=/usr/local/apache2/htdocs/${sDB}.lsdb
 
-sMedia="/var/www/web1/storage/Y/DIGITAL MUSIC LIBRARY/LiveMusic/"
+sMedia="/Y/DIGITAL MUSIC LIBRARY/LiveMusic/"
 sSong=$(grep "^${sTrk}|" ${sDBF}|tail -1|cut -f6,7 -d'|' --output-delimiter='/') 
 
 sLog=/var/tmp/$(date "+%Y%m%d%H%M%S").$$

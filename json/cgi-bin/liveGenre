@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sLib="$(ls /var/www/data/*.lsdb|tail -1)"
+sLib="$(ls /usr/local/apache2/htdocs/*.lsdb|tail -1)"
 
 sComma=""
 echo "Content-type: application/json"
