@@ -8,7 +8,6 @@ sType="mp3"
 sMType="mpeg"
 sMediaPath=/usr/local/apache2/htdocs/shows  # was /var/www/web1/storage/ShowArchive/
 
-#/var/www/web1/storage/ShowArchive/
 sFile=$(ls -1 ${sMedia}/${sShow}*.${sType})
 
 

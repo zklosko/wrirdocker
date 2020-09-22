@@ -1,4 +1,4 @@
-# WRIR Dpcker Stack
+# WRIR Docker Stack
 
 This is the attempt to migrate WRIR backend services to containers for easier deployment and maintence. Also because we need to migrate in order to repair our servers.
 
@@ -20,7 +20,7 @@ Replacing Bandito:
   - Now based off Debian 9 (Stretch-slim)
   - `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder --restart=always recorder`
   - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recdeb`
-  
+
 Replacing Rostov:
 
 - json: *in testing*
@@ -31,6 +31,9 @@ Replacing Rostov:
     - Make new container for CRON scripts?
   - `docker run -d -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows --publish 80:80 --restart=always --name files.wrir.org httpd`
     - Still need to mount Y and Z drives, and mount location for logs
+- cron *in testing*
+  - Using Debian stretch-slim image
+  - `docker run -d -v /wrirdocker/webdav/mounts/Y:/Y --name cron cron`
 
 Replacing Blackhand:
 
