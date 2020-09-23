@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#Pull schedule on script start
+#Pull schedule on script start, pass to publish directory for json container
 bash -x ./getsched17.sh  #removed & from command
+cp -f showdata.txt ./publish
 
 while true
 do
