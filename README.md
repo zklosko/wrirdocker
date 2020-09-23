@@ -26,10 +26,12 @@ Replacing Rostov:
   - Using httpd
   - HTTP 401 Error page created
   - Cgi scripts appear to be executing correctly
+  - On prem: `docker run -d -v /wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows -v /wrirdocker/webdav/mounts/Y:/Y --publish 80:80 --restart=always --name files.wrir.org httpd`
   - `docker run -d -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows -v /wrirdocker/webdav/mounts/Y:/Y --publish 80:80 --restart=always --name files.wrir.org httpd`
     - Still need to mount Y and Z drives, and mount location for logs
 - cron: *in testing*
   - Using Alpine
+  - On prem: `docker run -d -v /wrirdocker/webdav/mounts:/Y -v /wrirdocker/stream-recorder/scripts/publish:/shows -v /wrirdocker/json/htdocs:/htdocs --name cron cron`
   - `docker run -ti --rm -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/mounts:/Y -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/shows -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/htdocs --name cron cron`
 
 Replacing Blackhand:

@@ -1,3 +1,22 @@
+version: '3'
+
+services:
+  files.wrir.org:
+    image: httpd
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+    volumes:
+     - type: bind
+       source: /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs
+       target: /var/local/apache2/htdocs
+     - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/var/local/apache2/cgi-bin"
+     - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/var/local/apache2/conf/httpd.conf"
+     - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/publish:/var/local/apache2/htdocs/shows"
+    restart: always
+      
   webdav:
     image: twizzel/webdav
     restart: always
@@ -29,3 +48,29 @@
       - ./sshd/keys:/etc/ssh/keys
       - ./sshd/setpasswd.sh:/etc/entrypoint.d/
       
+  icecast:
+    image: infiniteproject/icecast
+    environment:
+      ICECAST_SOURCE_PASSWORD: wwr4trou
+      ICECAST_ADMIN_PASSWORD: wwr4trou
+      ICECAST_RELAY_PASSWORD: wwr4trou
+      ICECAST_ADMIN_USERNAME: wrirops
+      ICECAST_ADMIN_EMAIL: operations@wrir.org
+      ICECAST_LOCATION: Richmond, VA
+      ICECAST_HOSTNAME: bandito
+      ICECAST_MAX_CLIENTS: 50
+      ICECAST_MAX_SOURCES: 2
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp
+        mode: host
+    restart: always
+    
+  stream-recorder:
+    build: stream-recorder/.
+    volumes:
+      - /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts
+    depends_on:
+      - icecast
+    restart: always
