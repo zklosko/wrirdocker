@@ -1,4 +1,4 @@
-FROM httpd:2.4
+FROM httpd:alpine
 MAINTAINER Bytemark, modifications by Zachary Klosko (kloskoz@vcu.edu)
 
 # These variables are inherited from the httpd:alpine image:
@@ -49,6 +49,10 @@ RUN set -ex; \
     ln -s ../sites-available/default.conf "conf/sites-enabled"; \
     # Install openssl if we need to generate a self-signed certificate.
     apk add --no-cache openssl
+
+RUN mkdir /var/lib/dav/data/Y && /var/lib/dav/data/Z && \
+  mount -t cifs -o username=rfrdj,password=wwr4trou,domain=wrir.local,vers=1.0 //192.168.200.16/shared /var/lib/dav/data/Y && \
+  mount -t cifs -o username=rfrdj,password=wwr4trou,domain=wrir.local,vers=1.0 //192.168.200.23/z /var/lib/dav/data/Z
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 EXPOSE 80/tcp 443/tcp
