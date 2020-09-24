@@ -38,7 +38,9 @@ Replacing Blackhand:
   - Successfully accepts user.passwd file from Blackhand!
   - Using autogen self signed SSL cert
   - Doesn't run correctly on on-prem PC; maybe is scanning files?
-  - `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d --restart=always --name webdav twizzel/webdav`
+    - chown: /var/lib/dav/data/Y/.Trash-1001/files/Rock.2/U.S. Girls - In a Poem Unlimited (4AD, 2018)/07 - L-Over.mp3: Permission denied
+  - On prem: `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti --rm --restart=always --name webdav twizzel/webdav`
+  - Local: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/mounts:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d --restart=always --name webdav twizzel/webdav`
 - ssh: *not working*
   - Idea: pass users/hashed passwords in via a script, try not to delete container
   - `docker run -d --publish 2222:22 -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/entrypoint.d:/etc/entrypoint.d" -e SSH_ENABLE_PASSWORD_AUTH=true --name ssh panubo/sshd`

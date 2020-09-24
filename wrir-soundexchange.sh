@@ -18,7 +18,6 @@
 #                Referrer/Client:  Free text  - spaces are fine
 
 sMounts=(WRIR96kbps wrir)
-#sMounts=(WRIR96kbps)
 
 sAnnaDate="2020-08-01"
 
