@@ -9,10 +9,10 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/var/local/apache2/htdocs"
-      - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/var/local/apache2/cgi-bin"
-      - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/var/local/apache2/conf/httpd.conf"
-      - "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/publish:/var/local/apache2/htdocs/shows"
+      - /wrirdocker/json/htdocs:/var/local/apache2/htdocs
+      - /wrirdocker/json/cgi-bin:/var/local/apache2/cgi-bin
+      - /wrirdocker/json/httpd.conf:/var/local/apache2/conf/httpd.conf
+      - /wrirdocker/stream-recorder/publish:/var/local/apache2/htdocs/shows
     restart: always
       
   icecast:
