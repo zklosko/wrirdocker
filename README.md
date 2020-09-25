@@ -18,10 +18,10 @@ Replacing Bandito:
 - stream-recorder: *ready for deployment*
   - Now based off Debian 9 (Stretch-slim)
   - Because of Docker networking, can read stream from "files.wrir.org:8000" but not "localhost:8000"
-  - On prem: `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs --restart=always recorder`
-    - Test: `docker run -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs --rm -ti recorder`
-  - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recdeb`
-  - `docker run -ti --rm -v /wrirdocker/webdav/mounts/Y:/Y recorder`
+  - On prem: `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs -v /wrirdocker/webdav/mounts/Z:/Z --restart=always recorder`
+  - Test: `docker run -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs --rm -ti recorder`
+    - `docker run -d -v "/Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder recdeb`
+    - `docker run -ti --rm -v /wrirdocker/webdav/mounts/Y:/Y recorder`
 
 Replacing Rostov:
 
@@ -29,7 +29,7 @@ Replacing Rostov:
   - Using httpd
   - `showlist9`, `sl2-SpecialNeeds`, `liveBands` - `livesound2` work as intended
   - `heart` doesn't work over ssh tunnel
-  - `get5` - `getTrack` doesn't work
+  - `get5` - `getTrack` doesn't work, even on the current server
   - On prem: `docker run -d -v /wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows -v /wrirdocker/webdav/mounts/Y:/Y --publish 80:80 --restart=always --name files.wrir.org httpd`
   - Local: `docker run -d -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/usr/local/apache2/htdocs -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts/publish:/usr/local/apache2/htdocs/shows -v /wrirdocker/webdav/mounts/Y:/Y --publish 80:80 --restart=always --name files.wrir.org httpd`
     - Still need to mount location for logs

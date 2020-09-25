@@ -16,8 +16,8 @@ ls raw/*.publish |
 while read sFile ; do
   echo Working on ${sFile}
 
-  mv ${sFile} ${sFile%.publish}.tfr  # creates showname.publish.tfr file
-  sFN=${sFile%.publish}  # removes .publish from filename variable?
+  mv ${sFile} ${sFile%.publish}.tfr  # renames input file
+  sFN=${sFile%.publish}  # removes .publish from filename variable
   echo Publishing $sFN
   for sExt in mp3 ogg; do
     if cp ${sFN}.${sExt} ${sDest} ; then  # copy mp3, ogg files to dest
@@ -25,7 +25,12 @@ while read sFile ; do
     else
       touch ${sFN}.${sExt}.error  # create showname.error file on copy error
     fi
+    
+    # Archive the show directly to the Z drive for immediate access
+    if cp ${sFN}.mp3 "/Z/AUDIO ARCHIVES/ShowArchive/${sShowYr}/" ; then
+      echo Archive good
   done
+  
   [[ -s ${sFN}.info ]] && cp ${sFN}.info ${sDest}
   [[ -s ${sFN}.audio.txt ]] && cp ${sFN}.audio.txt ${sDest}
   if cp ${sFN}.tfr ${sDest}/${sFN##*/}.ready ; then
