@@ -2,6 +2,5 @@ FROM panubo/sshd
 MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
 COPY setpasswd.sh /
-RUN bash setpasswd.sh
 
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+CMD ["bash setpasswd.sh"]
