@@ -9,10 +9,10 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - /wrirdocker/json/htdocs:/var/local/apache2/htdocs
-      - /wrirdocker/json/cgi-bin:/var/local/apache2/cgi-bin
-      - /wrirdocker/json/httpd.conf:/var/local/apache2/conf/httpd.conf
-      - /wrirdocker/stream-recorder/publish:/var/local/apache2/htdocs/shows
+      - /wrirdocker/json/htdocs:/usr/local/apache2/htdocs
+      - /wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin
+      - /wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - /wrirdocker/stream-recorder/publish:/usr/local/apache2/htdocs/shows
     restart: always
       
   icecast:
@@ -39,6 +39,7 @@ services:
     volumes:
       - /wrirdocker/stream-recorder/scripts:/scripts
       - /wrirdocker/webdav/mounts/Y:/Y
+      - /wrirdocker/webdav/mounts/Z:/Z
       - /wrirdocker/json/htdocs:/htdocs
     depends_on:
       - icecast
