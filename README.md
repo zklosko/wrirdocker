@@ -6,8 +6,9 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 
 ## TODOs
 
-- [] Pull password file for use with ssh or put together a plan to distribute new passwords to users
-- [] Get SSHD to accept user/password creation script
+- [ ] Pull password file for use with ssh or put together a plan to distribute new passwords to users
+- [ ] Get SSHD to accept user/password creation script
+- [ ] Verify archiving abilities of stream-recorder
 
 ## Updates
 

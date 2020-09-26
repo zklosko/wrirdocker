@@ -27,7 +27,10 @@ while read sFile ; do
     fi
     
     # Archive the show directly to the Z drive for immediate access
-    if cp ${sFN}.mp3 "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/" ; then
+    sShowYr=${sFN:0:4}
+    sArcDir="/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/"
+    [[ ! -d ${sArcDir} ]] && mkdir sArcDir
+    if cp ${sFN}.mp3 sArcDir ; then
       echo Archive good
     else
 #       cp ${sFN}.mp3 sWorkDir/archive
