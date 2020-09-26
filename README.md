@@ -47,7 +47,7 @@ Replacing Blackhand:
   - Successfully accepts user.passwd file from Blackhand!
   - Using autogen self signed SSL cert
   - Doesn't run correctly on on-prem PC; maybe is scanning files?
-    - chown: /var/lib/dav/data/Y/.Trash-1001/files/Rock.2/U.S. Girls - In a Poem Unlimited (4AD, 2018)/07 - L-Over.mp3: Permission denied
+    - `chown: /var/lib/dav/data/Y/.Trash-1001/files/Rock.2/U.S. Girls - In a Poem Unlimited (4AD, 2018)/07 - L-Over.mp3: Permission denied`
     - Using a UID that matches the one on Humans results in: `sed: can't create temp file '/usr/local/apache2/conf/conf-available/dav.confXXXXXX': Permission denied`
   - On prem: `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti --rm twizzel/webdav`
   - Local: `docker run -v /Volumes/files.wrir.org:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned --privileged -ti dav`
