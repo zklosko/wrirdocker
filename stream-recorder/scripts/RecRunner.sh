@@ -7,13 +7,12 @@ bash ./lsdb2.sh &  # make live sound database at launch
 while true
 do
   date -R
-  #echo pre whatson $(date)
+  
   bash ./whatson4.sh &  # sending to background
-  #echo post whatson $(date)
   bash ./posted.sh &
   bash ./getInfo2.sh &
   bash ./Publish.sh &
-  sleep 15
+  sleep 5
   
   #At 10 minutes to, get the new schedule, build lsdb, run cleanup. xx:50
   sMinuteHand=$(date +%M)
