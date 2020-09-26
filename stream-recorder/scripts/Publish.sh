@@ -12,7 +12,9 @@ sMinFree=97
 
 echo Start $0 $(date)
 
-ls raw/*.publish |
+cd ./raw/
+
+ls *.publish |
 while read sFile ; do
   echo Working on ${sFile}
 
@@ -29,7 +31,7 @@ while read sFile ; do
     # Archive the show directly to the Z drive for immediate access
     sShowYr=${sFile:0:4}
     mkdir "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/"
-    if cp ${sFN}.mp3 "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/" ; then
+    if cp ${sFN}.mp3 "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/" ; then  # keeps landing in x/raw
       echo Archive good
     else
 #       cp ${sFN}.mp3 sWorkDir/archive
