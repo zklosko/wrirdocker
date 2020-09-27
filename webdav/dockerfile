@@ -2,8 +2,8 @@ FROM debian:stretch-slim
 
 ARG http_proxy
 ARG https_proxy
-RUN apt-get update \
- && apt-get install -yq --no-install-recommends nginx-extras gosu apache2-utils \
+RUN apt-get update -y \
+ && apt-get install --no-install-recommends nginx-extras gosu apache2-utils -y \
  && rm -rf /var/lib/apt/lists/*
 
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
