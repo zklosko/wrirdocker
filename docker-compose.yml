@@ -38,8 +38,8 @@ services:
     build: stream-recorder/.
     volumes:
       - /wrirdocker/stream-recorder/scripts:/scripts
-      - /wrirdocker/webdav/mounts/Y:/Y
-      - /wrirdocker/webdav/mounts/Z:/Z
+      - /wrirdocker/mounts/Y:/Y
+      - /wrirdocker/mounts/Z:/Z
       - /wrirdocker/json/htdocs:/htdocs
     depends_on:
       - icecast
