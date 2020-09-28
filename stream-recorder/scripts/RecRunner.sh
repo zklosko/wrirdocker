@@ -9,6 +9,8 @@ do
   date -R
   
   bash ./whatson4.sh &  # sending to background
+  sleep 5
+  
   bash ./posted.sh &
   bash ./getInfo2.sh &
   bash ./Publish.sh &
