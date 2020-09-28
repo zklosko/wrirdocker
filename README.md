@@ -4,11 +4,21 @@ This is the attempt to migrate WRIR backend services to containers for easier de
 
 Please contact Zachary Klosko (@Zack on Slack) for access or additional information
 
+## Instructions
+
+1. Clone down this repo into the root directory of the filesystem `/`
+2. Follow the instructions on docker.com to install Docker and Docker-Compose
+3. Mount the network drives to `/wrirdocker/mounts/Y` and `/wrirdocker/mounts/Z` using [this TechRepublic article](https://www.techrepublic.com/article/how-to-permanently-mount-a-windows-share-on-linux/)
+4. cd into the repo and run `docker-compose up -d`
+5. After the containers are launched, run `htop` to monitor the system's process. The initial load on the processor should calm back down after 5-10 minutes.
+6. ???
+7. Profit... er, non-profit that is
+
 ## TODOs
 
 - [ ] Pull password file for use with ssh or put together a plan to distribute new passwords to users
 - [ ] Get SSHD to accept user/password creation script
-- [ ] Verify archiving abilities of stream-recorder
+- [x] Verify archiving abilities of stream-recorder
 
 ## Updates
 
