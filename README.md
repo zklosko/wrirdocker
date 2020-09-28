@@ -45,17 +45,14 @@ Replacing Rostov:
 
 Replacing Blackhand:
 
+- webdav: *ready for deployment*
+  - Using isyangban's fix of Bytemark's webdav image, needs manual build
+  - Successfully accepts user.passwd file from Blackhand!
+  - Using autogen self signed SSL cert
+  - On prem: `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d webdav`
+  - Local: `docker run -v /Volumes/files.wrir.org:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti webdav`
 - ssh: *not working*
   - Idea: pass users/hashed passwords in via a script, try not to delete container
     - Or pass in usernames, hashed passwords via. `setpasswd.sh`, which runs on container build
   - On prem: `docker run -d --publish 2222:22 -v /wrirdocker/sshd/keys/:/etc/ssh/keys -e SSH_ENABLE_PASSWORD_AUTH=true -e TCP_FORWARDING=true --name ssh --restart=always ssh`
   - Local: `docker run -ti --publish 2222:22 -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/keys/:/etc/ssh/keys -e SSH_USERS=user:1000:1000 -e SSH_ENABLE_PASSWORD_AUTH=true ssh`
-- webdav: *not working*
-  - Using Twizzel's fix of Bytemark's webdav image
-  - Successfully accepts user.passwd file from Blackhand!
-  - Using autogen self signed SSL cert
-  - Doesn't run correctly on on-prem PC; maybe is scanning files?
-    - `chown: /var/lib/dav/data/Y/.Trash-1001/files/Rock.2/U.S. Girls - In a Poem Unlimited (4AD, 2018)/07 - L-Over.mp3: Permission denied`
-    - Using a UID that matches the one on Humans results in: `sed: can't create temp file '/usr/local/apache2/conf/conf-available/dav.confXXXXXX': Permission denied`
-  - On prem: `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti --rm twizzel/webdav`
-  - Local: `docker run -v /Volumes/files.wrir.org:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned --privileged -ti dav`
