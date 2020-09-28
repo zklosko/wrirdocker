@@ -49,7 +49,7 @@ Replacing Blackhand:
   - Using isyangban's fix of Bytemark's webdav image, needs manual build
   - Successfully accepts user.passwd file from Blackhand!
   - Using autogen self signed SSL cert
-  - On prem: `docker run -v /wrirdocker/webdav/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -d webdav`
+  - On prem: `docker run -v /wrirdocker/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned --name webdav --restart=always -d webdav`
   - Local: `docker run -v /Volumes/files.wrir.org:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti webdav`
 - ssh: *not working*
   - Idea: pass users/hashed passwords in via a script, try not to delete container
