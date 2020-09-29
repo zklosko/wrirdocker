@@ -16,7 +16,7 @@ services:
     restart: always
       
   icecast:
-    image: infiniteproject/icecast
+    build: icecast/.
     environment:
       ICECAST_SOURCE_PASSWORD: wwr4trou
       ICECAST_ADMIN_PASSWORD: wwr4trou
