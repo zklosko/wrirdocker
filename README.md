@@ -29,8 +29,8 @@ Replacing Bandito:
 - stream-recorder: *ready for deployment*
   - Now based off Debian 9 (Stretch-slim)
   - Because of Docker networking, can read stream from "files.wrir.org:8000" but not "localhost:8000"
-  - On prem: `docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/webdav/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs -v /wrirdocker/webdav/mounts/Z:/Z --restart=always recorder`
-  - Test: `docker run -v "/wrirdocker/stream-recorder/scripts:/scripts" -v /wrirdocker/json/htdocs:/htdocs --rm -ti recorder`
+  - On prem: `sudo docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs -v /wrirdocker/mounts/Z:/Z --restart=always recorder`
+  - Test: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/htdocs -v /Users/zacharyklosko/Desktop/Z:/Z -d recorder`
 
 Replacing Rostov:
 

@@ -1,12 +1,15 @@
 #!/bin/bash
 
+cd scripts
+
 #Pull schedule on script start, pass to publish directory for json container
 bash ./getsched17.sh  #removed & from command
-bash ./lsdb2.sh &  # make live sound database at launch
+#bash -x ./lsdb2.sh &  # make live sound database at launch
 
 while true
 do
   date -R
+  cd /scripts
   
   bash ./whatson4.sh &  # sending to background
   sleep 5
