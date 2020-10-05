@@ -4,7 +4,7 @@ cd scripts
 
 #Pull schedule on script start, pass to publish directory for json container
 bash ./getsched17.sh  #removed & from command
-#bash -x ./lsdb2.sh &  # make live sound database at launch
+bash ./lsdb2.sh &  # make live sound database at launch
 
 while true
 do
