@@ -51,8 +51,4 @@ Replacing Blackhand:
   - Using autogen self signed SSL cert
   - On prem: `docker run -v /wrirdocker/mounts:/var/lib/dav/data -v /wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned --name webdav --restart=always -d webdav`
   - Local: `docker run -v /Volumes/files.wrir.org:/var/lib/dav/data -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/webdav/user.passwd:/user.passwd -e AUTH_TYPE=Basic --publish 443:443 -e SSL_CERT=selfsigned -ti webdav`
-- ssh: *not working*
-  - Idea: pass users/hashed passwords in via a script, try not to delete container
-    - Or pass in usernames, hashed passwords via. `setpasswd.sh`, which runs on container build
-  - On prem: `docker run -d --publish 2222:22 -v /wrirdocker/sshd/keys/:/etc/ssh/keys -e SSH_ENABLE_PASSWORD_AUTH=true -e TCP_FORWARDING=true --name ssh --restart=always ssh`
-  - Local: `docker run -ti --publish 2222:22 -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/sshd/keys/:/etc/ssh/keys -e SSH_USERS=user:1000:1000 -e SSH_ENABLE_PASSWORD_AUTH=true ssh`
+- ssh: *eh... set up on different device*

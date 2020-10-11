@@ -1,6 +1,0 @@
-FROM panubo/sshd
-MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
-
-COPY setpasswd.sh /
-
-CMD ["bash /setpasswd.sh"]
