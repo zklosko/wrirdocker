@@ -3,7 +3,7 @@
 #ptaffs April 2014. wrir.org 97.3lpfm RVA
 #json version
 
-sMediaPath=/usr/local/apache2/htdocs/shows  # was /var/www/web1/storage/ShowArchive/
+sMediaPath=/recorder/publish  # was /var/www/web1/storage/ShowArchive/
 sFirst=0
 
 sType="all"
@@ -28,7 +28,7 @@ while read sFile
 do
   
   sBaseName=${sFile##*/}
-  sShow=${sBaseName:13}
+  sShow=${sBaseName:13:99}
   sShow=${sShow%%.ready}
 
   if [[ -f ${sFile%%.ready}.info ]]; then
@@ -54,8 +54,8 @@ do
       echo "\"presenter2\": \"${sDJ}\","
       echo "\"datestamp\": \"${sBaseName:0:12}\","
       echo "\"dateunix\": \"${sUXTime}\","
-      echo "\"mp3\": \"https://vault.wrir.org/shows/${sBaseName%%.ready}.mp3\","
-      echo "\"oga\": \"https://vault.wrir.org/shows/${sBaseName%%.ready}.ogg\","
+      echo "\"mp3\": \"http://files.wrir.org/shows/${sBaseName%%.ready}.mp3\","
+      echo "\"oga\": \"http://files.wrir.org/shows/${sBaseName%%.ready}.ogg\","
       echo "\"type\": \"${sShowData[4]}\","
       sPoster=${sShowData[7]%%*/}
       echo "\"poster\": \"${sShowData[7]}\","

@@ -1,18 +1,15 @@
 version: '3'
 
 services:
-  files.wrir.org:
-    image: httpd
+  api:
+    build api/.
     ports:
       - target: 80
         published: 80
         protocol: tcp
         mode: host
     volumes:
-      - /wrirdocker/json/htdocs:/usr/local/apache2/htdocs
-      - /wrirdocker/json/cgi-bin:/usr/local/apache2/cgi-bin
-      - /wrirdocker/json/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - /wrirdocker/stream-recorder/publish:/usr/local/apache2/htdocs/shows
+      - /wrirdocker/stream-recorder/publish:/srv/static/shows
     restart: always
       
   icecast:
@@ -58,4 +55,6 @@ services:
     volumes:
       - /wrirdocker/mounts:/var/lib/dav/data
       - /wrirdocker/webdav/user.passwd:/user.passwd
+      - /etc/letsencrypt/live/files.wrir.org/fullchain.pem:/cert.pem
+      - /etc/letsencrypt/live/files.wrir.org/privkey.pem:/privkey.pem
     restart: always

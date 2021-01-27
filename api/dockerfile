@@ -1,0 +1,10 @@
+FROM nginx
+LABEL author="Zachary Klosko (kloskoz@vcu.edu)"
+
+RUN apt update -y && apt install -y fcgiwrap
+
+COPY srv /srv/
+COPY default /etc/nginx/sites-enabled/
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
