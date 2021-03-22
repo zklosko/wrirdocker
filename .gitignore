@@ -7,3 +7,5 @@ D8K
 *.lsdb
 *.mp3
 *.txt
+.x.*
+cron.log

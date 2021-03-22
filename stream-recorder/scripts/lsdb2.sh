@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sDIR="/Y/DIGITAL MUSIC LIBRARY/LiveMusic/"
-sLSDBFolder="/htdocs"  # mount to /json/htdocs
+sLSDBFolder="/scripts/publish"  # mount to /json/htdocs
 #cd /tmp
 
 sPrevDB=$(ls -1tr ${sLSDBFolder}/*.lsdb|tail -1)

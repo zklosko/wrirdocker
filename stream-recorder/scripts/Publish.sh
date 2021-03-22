@@ -31,14 +31,13 @@ while read sFile ; do
     # Archive the show directly to the Z drive for immediate access
     sShowYr=${sFile:0:4}
     sShowMo=${sFile:4:2}
-    sShowDn=${sFile:6:2}
-    mkdir -p "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/${sShowMo}/${sShowDn}"
-    if cp ${sFN}.mp3 "/Z/VOLUNTEERS/Zachary Klosko/ShowArchive/${sShowYr}/${sShowMo}/${sShowDn}"
+    mkdir -p "/Z/AUDIO ARCHIVE/ShowArchive/${sShowYr}/${sShowMo}"
+    if cp ${sFN}.mp3 "/Z/AUDIO ARCHIVE/ShowArchive/${sShowYr}/${sShowMo}"
     then
       echo Archive good
     else
-#       cp ${sFN}.mp3 sWorkDir/archive
-#       echo Archive error
+      cp ${sFN}.mp3 sWorkDir/archive
+      echo Archive error
       touch ${sFN}.noarc
     fi
   done

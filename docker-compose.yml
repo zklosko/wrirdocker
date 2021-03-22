@@ -2,14 +2,14 @@ version: '3'
 
 services:
   api:
-    build api/.
+    build: api/.
     ports:
       - target: 80
         published: 80
         protocol: tcp
         mode: host
     volumes:
-      - /wrirdocker/stream-recorder/publish:/srv/static/shows
+      - /wrirdocker/stream-recorder/scripts/publish:/srv/static
     restart: always
       
   icecast:
@@ -21,14 +21,16 @@ services:
       ICECAST_ADMIN_USERNAME: wrirops
       ICECAST_ADMIN_EMAIL: operations@wrir.org
       ICECAST_LOCATION: Richmond, VA
-      ICECAST_HOSTNAME: bandito
+      ICECAST_HOSTNAME: icecast
       ICECAST_MAX_CLIENTS: 50
-      ICECAST_MAX_SOURCES: 2
+      ICECAST_MAX_SOURCES: 4
     ports:
       - target: 8000
         published: 8000
         protocol: tcp
         mode: host
+    volumes:
+      - /wrirdocker/icecast/logs:/var/log/icecast
     restart: always
     
   stream-recorder:
@@ -37,7 +39,6 @@ services:
       - /wrirdocker/stream-recorder/scripts:/scripts
       - /wrirdocker/mounts/Y:/Y
       - /wrirdocker/mounts/Z:/Z
-      - /wrirdocker/json/htdocs:/htdocs
     depends_on:
       - icecast
     restart: always
@@ -50,7 +51,6 @@ services:
          protocol: tcp
          mode: host
     enviornment:
-      SSL_CERT: selfsigned
       SERVER_NAMES: files.wrir.org
     volumes:
       - /wrirdocker/mounts:/var/lib/dav/data

@@ -9,14 +9,10 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
 1. Clone down this repo into the root directory of the filesystem `/`
 2. Follow the instructions on docker.com to install Docker and Docker-Compose
 3. Mount the network drives to `/wrirdocker/mounts/Y` and `/wrirdocker/mounts/Z` using [this TechRepublic article](https://www.techrepublic.com/article/how-to-permanently-mount-a-windows-share-on-linux/)
-4. cd into the repo and run `docker-compose up -d`
+4. cd into the repo and run `docker-compose up -d .`
 5. After the containers are launched, run `htop` to monitor the system's process. The initial load on the processor should calm back down after 5-10 minutes.
 6. ???
 7. Profit... er, non-profit that is
-
-## TODOs
-
-- [ ] Switch Apache out for Nginx on the json container
 
 ## Updates
 
@@ -26,7 +22,7 @@ Please contact Zachary Klosko (@Zack on Slack) for access or additional informat
   - Now based off Debian 9 (Stretch-slim)
   - Because of Docker networking, can read stream from "files.wrir.org:8000" but not "localhost:8000"
   - On prem: `sudo docker run -d -v "/wrirdocker/stream-recorder/scripts:/scripts" --name stream-recorder -v /wrirdocker/mounts/Y:/Y -v /wrirdocker/json/htdocs:/htdocs -v /wrirdocker/mounts/Z:/Z --restart=always recorder`
-  - Test: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/json/htdocs:/htdocs -v /Users/zacharyklosko/Desktop/Z:/Z -d recorder`
+  - Test: `docker run -v /Users/zacharyklosko/Documents/GitHub/wrirdocker/stream-recorder/scripts:/scripts -v /Users/zacharyklosko/Desktop/Z:/Z recorder`
 - Json API: *likely ready, but needs testing*
   - Using Nginx and fcgiwrap
   - `showlist9`, `sl2-SpecialNeeds`, `liveBands` - `livesound2` work as intended

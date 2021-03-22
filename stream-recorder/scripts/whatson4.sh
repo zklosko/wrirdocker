@@ -22,7 +22,7 @@ sSchedule=${sDate}.txt
 echo using schedule ${sSchedule}
 
 #Configured to pull from icecast container
-sStream=http://192.168.200.35:8000/wrir  # previously http://files.wrir.org:8000/wrir
+sStream=http://icecast:8000/wrir  # can also be set to http://files.wrir.org:8000/wrir
 sSaveTo=./  # saves to workdir
 
 sYesterdaysLast=$(grep -v 2400 $(date "+%a" -d yesterday).txt|tail -1)

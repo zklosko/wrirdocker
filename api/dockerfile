@@ -1,10 +1,12 @@
-FROM nginx
-LABEL author="Zachary Klosko (kloskoz@vcu.edu)"
+FROM httpd
+MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
 
-RUN apt update -y && apt install -y fcgiwrap
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+ADD cgi-bin /srv/cgi-bin
 
-COPY srv/ /srv/
-COPY default /etc/nginx/sites-enabled/
+VOLUME /usr/local/apache2
+VOLUME /srv
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+STOPSIGNAL SIGTERM
+CMD ["httpd-foreground"]

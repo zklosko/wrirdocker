@@ -24,7 +24,7 @@ sAnnaDate="2020-08-01"
 sRangeStart=$(date "+%s" -d "${sAnnaDate}")
 sRangeEnd=$(date "+%s" -d "${sAnnaDate} + 14 days")
 
-for sL in /var/log/icecast2/access*
+for sL in /wrirdocker/icecast/logs/access*
 do
 
 for sMount in ${sMounts[*]}

@@ -12,11 +12,11 @@ do
   cd /scripts
   
   bash ./whatson4.sh &  # sending to background
-  sleep 5
+  sleep 30
   
-  bash ./posted.sh &
-  bash ./getInfo2.sh &
-  bash ./Publish.sh &
+  bash ./posted.sh
+  bash ./getInfo2.sh
+  bash ./Publish.sh
   sleep 5
   
   #At 10 minutes to, get the new schedule, build lsdb, run cleanup. xx:50
@@ -25,7 +25,7 @@ do
   then
     bash ./getsched17.sh &
     bash ./lsdb2.sh &
-    bash ./Cleaner.sh &
+    # bash ./Cleaner.sh &
   fi
 
   #Recheck at top of minute xx:xx:00
