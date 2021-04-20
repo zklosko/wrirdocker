@@ -15,7 +15,7 @@ then
   sMTime=""
 else
   sOnlyShow=""
-  sMTime="-mtime -14"
+  #sMTime="-mtime -14"
 fi
 
 echo "Content-type: application/json"

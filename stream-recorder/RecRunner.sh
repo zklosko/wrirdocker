@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd scripts
+cd /scripts
 
 #Pull schedule on script start, pass to publish directory for json container
 bash ./getsched17.sh  #removed & from command
@@ -25,7 +25,7 @@ do
   then
     bash ./getsched17.sh &
     bash ./lsdb2.sh &
-    # bash ./Cleaner.sh &
+    bash ./Cleaner.sh &
   fi
 
   #Recheck at top of minute xx:xx:00

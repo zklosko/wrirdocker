@@ -1,9 +1,9 @@
 FROM debian:stretch-slim
-MAINTAINER Zachary Klosko (kloskoz@vcu.edu)
+LABEL author="Zachary Klosko (kloskoz@vcu.edu)"
 
 # To set local timezone, source: https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes
 ENV TZ="America/New_York"
-RUN apt update -y && apt install wget curl ffmpeg tzdata procps id3v2 -y && \
+RUN apt update && apt install wget curl ffmpeg tzdata procps id3v2 -y && \
   ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY RecRunner.sh /
